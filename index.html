@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>منصة كودجي | مراجعة المصفوفات والشروط والتكرار</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{font-family:'Cairo',sans-serif;background:#0b0f19;color:#f3f4f6;font-size:16px}
+.code-font,pre,code{font-family:'Fira Code',monospace;direction:ltr;text-align:left}
+.custom-glass{background:rgba(30,41,59,.78);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.1)}
+.gradient-text{background:linear-gradient(135deg,#6366f1,#a855f7 50%,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+pre{white-space:pre-wrap;word-break:break-word}
+button,label{touch-action:manipulation}
+.option-label{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:12px;background:#020617aa;border:1px solid #29364a;cursor:pointer;transition:.2s}
+.option-label:hover{border-color:#818cf8;background:#111c32}
+.option-label input{margin-top:5px;accent-color:#818cf8;flex-shrink:0}
+.feedback{padding:12px;border-radius:12px;font-size:13px;line-height:1.8}
+.step-dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#312e81;color:#c7d2fe;font-weight:800;flex-shrink:0}
+@media(max-width:640px){body{font-size:15px}header h1{font-size:1.25rem!important}main{padding-left:.75rem!important;padding-right:.75rem!important}.panel{padding:15px!important}button{min-height:44px}}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 custom-glass shadow-2xl">
+ <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+  <div class="flex items-center gap-3">
+   <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-500 p-0.5"><div class="w-full h-full bg-slate-900 rounded-2xl flex items-center justify-center text-cyan-300"><i class="fas fa-cubes text-xl"></i></div></div>
+   <div><h1 class="text-2xl font-black gradient-text">منصة كودجي <span class="text-xs text-indigo-300">CodeGy</span></h1><p class="text-xs text-slate-400">منصة علوم الحاسب والبرمجة</p></div>
+  </div>
+  <div class="flex items-center gap-3 flex-wrap">
+   <div class="hidden sm:block text-left border-r border-slate-700 pr-3"><p class="text-xs text-slate-400">الإشراف التعليمي</p><b class="text-sm text-indigo-300">المهندس أندرو مجدي</b></div>
+   <a href="https://wa.me/201285529570" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-xl text-sm font-bold"><i class="fab fa-whatsapp ml-1"></i>01285529570</a>
+  </div>
+ </div>
+</header>
+
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 space-y-10 flex-grow">
+<section class="rounded-3xl bg-gradient-to-l from-indigo-950 via-slate-900 to-purple-950 border border-indigo-500/30 p-6 md:p-8 shadow-2xl">
+ <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+  <div class="space-y-3 text-center md:text-right">
+   <span class="inline-block text-xs px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20"><i class="fas fa-laptop-code ml-1"></i> البرمجة والذكاء الاصطناعي | تانية بكالوريا</span>
+   <h2 class="text-2xl md:text-3xl font-black">مراجعة المصفوفات والتكرار والشروط المتداخلة</h2>
+   <p class="text-slate-300 text-sm leading-8 max-w-3xl">ابدأ بمراجعة نقاط الدرس وشرح الأكواد الأربعة خطوة بخطوة، ثم انتقل إلى أسئلة تتبع الخرج والتحدي العكسي وأسئلة المفاهيم. في النهاية احسب نتيجتك وجهّز تقريرك.</p>
+  </div>
+  <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700 w-full md:max-w-xs">
+   <label for="studentName" class="text-xs text-slate-400 block mb-2 font-bold">اسم الطالب</label>
+   <input id="studentName" class="w-full bg-slate-800 border border-slate-600 rounded-xl p-3 text-center text-white outline-none focus:border-indigo-500" placeholder="اكتب اسمك هنا">
+  </div>
+ </div>
+</section>
+
+<!-- Lesson outline -->
+<section class="space-y-5">
+ <div class="border-b border-slate-800 pb-4"><h3 class="text-2xl font-black"><i class="fas fa-book-open text-indigo-400 ml-2"></i>أولًا: نقاط شرح الدرس</h3><p class="text-sm text-slate-400 mt-2">ملخص المفاهيم الأساسية التي تحتاجها لفهم الأكواد.</p></div>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">1</span><div><h4 class="font-extrabold text-indigo-300">المصفوفة Array</h4><p class="text-sm text-slate-300 leading-7 mt-2">تخزن أكثر من قيمة داخل متغير واحد، وتكتب عناصرها بين الأقواس المربعة <code class="text-cyan-300">[]</code>، مع الفصل بين العناصر بالفواصل.</p><pre class="bg-slate-950 rounded-xl p-3 mt-3 text-cyan-200 text-xs">let volunteerList = ["Yes", "No", "Yes"];</pre></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">2</span><div><h4 class="font-extrabold text-indigo-300">حلقة for...of</h4><p class="text-sm text-slate-300 leading-7 mt-2">تكرر تنفيذ الأوامر على عناصر المصفوفة، وفي كل دورة تأخذ قيمة العنصر الحالي.</p><pre class="bg-slate-950 rounded-xl p-3 mt-3 text-cyan-200 text-xs">for (let day of volunteerList) {
+  // أوامر تتكرر لكل عنصر
+}</pre></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">3</span><div><h4 class="font-extrabold text-indigo-300">الجملة الشرطية if</h4><p class="text-sm text-slate-300 leading-7 mt-2">تختبر شرطًا؛ إذا كانت نتيجته <code class="text-cyan-300">true</code> ينفذ البرنامج الأوامر داخل if.</p><pre class="bg-slate-950 rounded-xl p-3 mt-3 text-cyan-200 text-xs">if (day == "Yes") {
+  count++;
+}</pre></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">4</span><div><h4 class="font-extrabold text-indigo-300">عامل المقارنة ==</h4><p class="text-sm text-slate-300 leading-7 mt-2">يقارن بين قيمتين للتحقق من تساويهما، وتكون نتيجة المقارنة <code class="text-cyan-300">true</code> أو <code class="text-cyan-300">false</code>.</p></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">5</span><div><h4 class="font-extrabold text-indigo-300">العداد count++</h4><p class="text-sm text-slate-300 leading-7 mt-2">يزيد قيمة المتغير بمقدار واحد. نبدأ غالبًا العداد من صفر ثم نزيده عند تحقق الشرط.</p><pre class="bg-slate-950 rounded-xl p-3 mt-3 text-cyan-200 text-xs">let count = 0;
+count++;</pre></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">6</span><div><h4 class="font-extrabold text-indigo-300">الشروط المتداخلة Nested if</h4><p class="text-sm text-slate-300 leading-7 mt-2">يمكن وضع if داخل if أخرى. لا نصل إلى فحص الشرط الداخلي إلا بعد تحقق الشرط الخارجي.</p></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">7</span><div><h4 class="font-extrabold text-indigo-300">الجملة else</h4><p class="text-sm text-slate-300 leading-7 mt-2">تنفذ عندما لا يتحقق الشرط المرتبط بها. الأقواس المعقوفة <code class="text-cyan-300">{ }</code> توضح بداية ونهاية كل جزء.</p></div></div></article>
+  <article class="bg-slate-900 border border-slate-800 rounded-2xl p-5"><div class="flex gap-3"><span class="step-dot">8</span><div><h4 class="font-extrabold text-indigo-300">العامل المنطقي AND (&&)</h4><p class="text-sm text-slate-300 leading-7 mt-2">يشترط تحقق الشرطين معًا حتى تكون نتيجة التعبير صحيحة.</p><pre class="bg-slate-950 rounded-xl p-3 mt-3 text-cyan-200 text-xs">if (weather == "sunny" && friends >= 10)</pre></div></div></article>
+ </div>
+</section>
+
+<!-- Code showcase -->
+<section class="space-y-5">
+ <div class="border-b border-slate-800 pb-4"><h3 class="text-2xl font-black"><i class="fas fa-code text-cyan-400 ml-2"></i>ثانيًا: الأكواد الأساسية ومعاينة الخرج</h3><p class="text-sm text-slate-400 mt-2">الأكواد الأربعة التي يدور حولها الشرح والاختبار.</p></div>
+ <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+  <div class="bg-slate-800 px-5 py-3 flex justify-between items-center flex-wrap gap-2"><span class="text-xs text-slate-300 code-font">javascript_examples.js</span><button onclick="runAll()" class="bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-xs font-bold"><i class="fas fa-play ml-1"></i>تشغيل الأكواد</button></div>
+  <div class="grid grid-cols-1 lg:grid-cols-2">
+   <div class="p-5 space-y-4 bg-slate-950">
+    <div><p class="text-indigo-300 text-sm font-bold mb-2">الكود الأول والثاني: عدّ عناصر المصفوفة</p><pre class="text-xs text-slate-300 leading-7">let volunteerList = ["Yes", "No", "Yes", "Yes", "No", "Yes", "No", "Yes", "Yes", "No", "Yes", "Yes", "No", "Yes"];
+
+let count = 0;
+for (let day of volunteerList) {
+  if (day == "Yes") {
+    count++;
+  }
+}
+console.log(count);</pre></div>
+    <div class="border-t border-slate-800 pt-4"><pre class="text-xs text-slate-300 leading-7">let count = 0;
+for (let day of volunteerList) {
+  if (day == "No") {
+    count++;
+  }
+}
+console.log(count);</pre></div>
+   </div>
+   <div class="p-5 bg-slate-900 space-y-4">
+    <div><p class="text-cyan-300 text-sm font-bold mb-2">الكود الثالث: الشروط المتداخلة</p><pre class="text-xs text-slate-300 leading-7">let weather = "sunny";
+let friends = 10;
+
+if (weather == "sunny") {
+  if (friends >= 10) {
+    console.log("play baseball");
+  } else {
+    console.log("play basketball");
+  }
+} else {
+  console.log("read a book");
+}</pre></div>
+    <div class="border-t border-slate-800 pt-4"><p class="text-purple-300 text-sm font-bold mb-2">الكود الرابع: اختيار الساندويتش</p><pre class="text-xs text-slate-300 leading-7">let sandwichType = "savory";
+let savory = "tuna";
+
+if (sandwichType == "savory") {
+  if (savory == "tuna") {
+    console.log("Exchange with Cody");
+  } else {
+    console.log("Eat ham sandwich");
+  }
+} else {
+  console.log("Eat strawberry jam sandwich");
+}</pre></div>
+   </div>
+  </div>
+  <div class="border-t border-slate-800 p-5"><div class="flex justify-between items-center mb-3"><span class="text-xs font-bold text-slate-400"><i class="fas fa-terminal text-emerald-400 ml-1"></i>شاشة الخرج Console</span><span id="runStatus" class="text-xs text-slate-500">جاهز للتشغيل</span></div><div id="consoleOutput" class="bg-black rounded-xl border border-slate-800 p-4 min-h-24 code-font text-sm text-emerald-400 leading-8">// اضغط على تشغيل الأكواد لعرض النتائج</div></div>
+ </div>
+</section>
+
+<!-- Interactive explanation -->
+<section class="space-y-5">
+ <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-4"><div><h3 class="text-2xl font-black"><i class="fas fa-chalkboard-teacher text-indigo-400 ml-2"></i>ثالثًا: الشرح التفاعلي خطوة بخطوة</h3><p class="text-sm text-slate-400 mt-2">انتقل بين الخطوات لفهم طريقة عمل الأكواد.</p></div><div class="flex items-center gap-2"><button id="prevStep" onclick="moveStep(-1)" class="bg-slate-800 px-4 py-2 rounded-xl text-sm disabled:opacity-30">السابق</button><span id="stepIndicator" class="text-xs text-indigo-300 bg-indigo-500/10 px-3 py-2 rounded-xl">الخطوة 1 من 8</span><button id="nextStep" onclick="moveStep(1)" class="bg-indigo-600 px-4 py-2 rounded-xl text-sm">التالي</button></div></div>
+ <div id="stepCard" class="bg-slate-900 rounded-2xl border border-slate-800 p-6 md:p-8 min-h-64 shadow-xl"></div>
+</section>
+
+<!-- Tracing -->
+<section class="space-y-5">
+ <div class="border-b border-slate-800 pb-4"><h3 class="text-2xl font-black"><i class="fas fa-terminal text-indigo-400 ml-2"></i>1. أسئلة تتبع الخرج (Code Tracing)</h3><p class="text-sm text-slate-400 mt-2">اقرأ الكود وحدد الناتج الصحيح.</p></div>
+ <div id="traceContainer" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+</section>
+
+<!-- Reverse -->
+<section class="space-y-5">
+ <div class="border-b border-slate-800 pb-4"><h3 class="text-2xl font-black"><i class="fas fa-code-branch text-cyan-400 ml-2"></i>2. التحدي العكسي (Output Matching)</h3><p class="text-sm text-slate-400 mt-2">اقرأ الخرج المطلوب واختر الكود الذي ينتجه.</p></div>
+ <div id="reverseContainer" class="space-y-5"></div>
+</section>
+
+<!-- Concepts -->
+<section class="space-y-5">
+ <div class="border-b border-slate-800 pb-4"><h3 class="text-2xl font-black"><i class="fas fa-file-circle-question text-purple-400 ml-2"></i>3. أسئلة المفاهيم وتراكيب الكود</h3><p class="text-sm text-slate-400 mt-2">اختبر فهمك للمصفوفات والحلقات والشروط.</p></div>
+ <div id="conceptContainer" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+</section>
+
+<!-- Score -->
+<section class="bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900 rounded-3xl border border-indigo-500/30 p-6 md:p-8 shadow-2xl text-center space-y-6">
+ <div><span class="text-xs font-bold text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full">التصحيح الذاتي والتقرير الشامل</span><h3 class="text-3xl font-black mt-3">النتيجة والتقرير النهائي</h3><p class="text-slate-300 text-sm mt-2">اضغط على حساب النتيجة لتصحيح جميع الأقسام وعرض شرح الإجابات.</p></div>
+ <div class="flex justify-center gap-5 flex-wrap"><div class="bg-slate-900 border border-slate-700 rounded-2xl p-4 min-w-36"><span class="text-xs text-slate-400">النقاط الكلية</span><div id="finalScore" class="text-3xl text-indigo-400 font-black mt-1">0 / 14</div></div><div class="bg-slate-900 border border-slate-700 rounded-2xl p-4 min-w-36"><span class="text-xs text-slate-400">النسبة المئوية</span><div id="finalPercentage" class="text-3xl text-cyan-400 font-black mt-1">0%</div></div></div>
+ <div class="text-right max-w-3xl mx-auto"><label class="block text-xs text-slate-400 mb-2">معاينة تقرير الطالب:</label><textarea id="reportBox" readonly rows="9" class="w-full bg-slate-950 border border-slate-700 rounded-2xl p-4 text-sm text-slate-300 leading-7"></textarea></div>
+ <div class="flex flex-col sm:flex-row justify-center gap-3"><button onclick="calculateReport()" class="bg-indigo-600 hover:bg-indigo-500 px-6 py-3 rounded-xl font-bold"><i class="fas fa-calculator ml-2"></i>احسب النتيجة وولد التقرير</button><button onclick="sendWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 px-6 py-3 rounded-xl font-bold"><i class="fab fa-whatsapp ml-2"></i>انسخ التقرير وافتح واتساب</button></div>
+ <p id="copyAlert" class="hidden text-emerald-400 text-sm">تم تجهيز التقرير.</p>
+</section>
+</main>
+<footer class="bg-slate-950 border-t border-slate-800 py-6 mt-10 text-center text-xs text-slate-400">جميع الحقوق محفوظة © 2026 - <b class="text-indigo-400">منصة كودجي CodeGy</b> | إعداد وإشراف: <b class="text-white">المهندس أندرو مجدي</b> (01285529570)</footer>
+
+<script>
+const volunteerList=["Yes","No","Yes","Yes","No","Yes","No","Yes","Yes","No","Yes","Yes","No","Yes"];
+function runAll(){const yes=volunteerList.filter(x=>x==="Yes").length,no=volunteerList.filter(x=>x==="No").length;document.getElementById('consoleOutput').innerHTML=`<div>&gt; الكود الأول (عدد Yes): ${yes}</div><div>&gt; الكود الثاني (عدد No): ${no}</div><div class="text-cyan-300">&gt; الكود الثالث: play baseball</div><div class="text-purple-300">&gt; الكود الرابع: Exchange with Cody</div>`;document.getElementById('runStatus').textContent='تم التنفيذ بنجاح';}
+const steps=[
+{title:"1. المصفوفة Array",code:'let volunteerList = ["Yes", "No", "Yes", ...];',desc:"المصفوفة volunteerList تحتوي على مجموعة من القيم النصية. كل قيمة تمثل عنصرًا داخل المصفوفة، ويمكن المرور على هذه العناصر واحدًا تلو الآخر.",example:"تذكّر: المصفوفة تجمع عدة قيم في متغير واحد، والعناصر هنا هي Yes وNo."},
+{title:"2. حلقة for...of",code:"for (let day of volunteerList) { ... }",desc:"تبدأ الحلقة المرور على عناصر volunteerList. في كل دورة، يأخذ المتغير day قيمة العنصر الحالي؛ لذلك تتكرر الأوامر بعدد عناصر المصفوفة.",example:"في أول دورة تكون قيمة day هي Yes، وفي الدورة التالية تكون No، ثم تنتقل إلى العنصر الذي يليه."},
+{title:"3. فحص الشرط وزيادة العداد",code:'if (day == "Yes") { count++; }',desc:"يفحص البرنامج هل قيمة day تساوي النص Yes. إذا تحقق الشرط، ينفذ count++ فتزيد قيمة العداد بمقدار واحد. إذا لم يتحقق، لا تزيد قيمة العداد.",example:"الكود الأول يحصي عدد مرات ظهور Yes، والكود الثاني يغيّر الشرط إلى No ليحصي مرات ظهور No."},
+{title:"4. تتبع الكود الأول والثاني",code:"Yes count = 9\\nNo count = 5",desc:"عند المرور على جميع عناصر المصفوفة نجد أن Yes تكررت 9 مرات، بينما No تكررت 5 مرات. لذلك يطبع الكود الأول 9 والثاني 5.",example:"مجموع القيمتين 9 + 5 = 14، وهو عدد عناصر المصفوفة."},
+{title:"5. الشروط المتداخلة Nested if",code:'if (weather == "sunny") {\\n  if (friends >= 10) { ... }\\n}',desc:"في الكود الثالث يفحص البرنامج الشرط الخارجي أولًا: هل الطقس sunny؟ إذا تحقق، ينتقل إلى الشرط الداخلي ليتحقق من عدد الأصدقاء.",example:"لا يتم فحص الشرط الداخلي إلا بعد تحقق الشرط الخارجي."},
+{title:"6. العامل المنطقي AND",code:'weather == "sunny" && friends >= 10',desc:"العامل && يعني AND، ويشترط تحقق الشرطين معًا. في الكود الثالث الطقس sunny وعدد الأصدقاء 10، لذلك الشرطان صحيحان.",example:'بما أن 10 >= 10 صحيحة، يكون الخرج: play baseball.'},
+{title:"7. فهم else داخل الشروط",code:'if (savory == "tuna") { ... } else { ... }',desc:"في الكود الرابع، إذا كان نوع الساندويتش savory ينتقل البرنامج إلى الشرط الداخلي. إذا كانت قيمة savory هي tuna يطبع Exchange with Cody، وإلا يطبع Eat ham sandwich.",example:"أما إذا لم يتحقق الشرط الخارجي sandwichType == savory، فينفذ else الخارجي ويطبع Eat strawberry jam sandwich."},
+{title:"8. طريقة تتبع أي كود",code:"1) اقرأ قيم المتغيرات\\n2) ابدأ من أول شرط\\n3) اتبع المسار الصحيح\\n4) راقب تغيّر العداد\\n5) حدد console.log",desc:"لحل أسئلة تتبع الخرج، لا تقفز مباشرة إلى الاختيارات. اقرأ القيم، ثم نفّذ التعليمات حسب ترتيبها، وحدد أي فرع من فروع if سيتم تنفيذه.",example:"راجع الأقواس { } جيدًا حتى تميّز بين else الداخلية وelse الخارجية."}
+];
+let currentStep=0;
+function renderStep(){const s=steps[currentStep];document.getElementById('stepCard').innerHTML=`<div class="space-y-4"><div class="flex items-center justify-between border-b border-slate-800 pb-3"><h4 class="font-bold text-lg text-indigo-300">${s.title}</h4><span class="text-xs text-purple-300 bg-purple-500/10 px-3 py-1 rounded-lg">الجزء ${currentStep+1}</span></div><pre class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-cyan-200">${s.code}</pre><p class="text-slate-300 leading-8">${s.desc}</p><div class="bg-indigo-950/40 border border-indigo-500/20 p-4 rounded-xl text-sm text-indigo-200 leading-7"><i class="fas fa-lightbulb ml-2 text-yellow-300"></i>${s.example}</div></div>`;document.getElementById('stepIndicator').textContent=`الخطوة ${currentStep+1} من ${steps.length}`;document.getElementById('prevStep').disabled=currentStep===0;document.getElementById('nextStep').disabled=currentStep===steps.length-1;}
+function moveStep(n){currentStep=Math.max(0,Math.min(steps.length-1,currentStep+n));renderStep();}
+const traceQs=[
+{title:"السؤال 1: عدّ قيم Yes",code:'let list = ["Yes", "No", "Yes", "Yes"];\\nlet count = 0;\\nfor (let item of list) {\\n  if (item == "Yes") count++;\\n}\\nconsole.log(count);',opts:["1","2","3","4"],a:2,why:"تظهر Yes ثلاث مرات، وفي كل مرة يزيد العداد واحدًا."},
+{title:"السؤال 2: عدّ قيم No",code:'let list = ["No", "Yes", "No", "No", "Yes"];\\nlet count = 0;\\nfor (let item of list) {\\n  if (item == "No") count++;\\n}\\nconsole.log(count);',opts:["2","3","4","5"],a:1,why:"تظهر No ثلاث مرات في المصفوفة."},
+{title:"السؤال 3: شرط الطقس والأصدقاء",code:'let weather = "sunny";\\nlet friends = 8;\\nif (weather == "sunny") {\\n if (friends >= 10) console.log("baseball");\\n else console.log("basketball");\\n} else console.log("book");',opts:["baseball","basketball","book","لا شيء"],a:1,why:"الشرط الخارجي صحيح، لكن 8 >= 10 غير صحيح، لذلك ينفذ else الداخلية."},
+{title:"السؤال 4: الساندويتش",code:'let sandwichType = "savory";\\nlet savory = "cheese";\\nif (sandwichType == "savory") {\\n if (savory == "tuna") console.log("Exchange");\\n else console.log("Ham");\\n} else console.log("Jam");',opts:["Exchange","Ham","Jam","لا شيء"],a:1,why:"الشرط الخارجي صحيح، والشرط الداخلي خطأ لأن cheese لا تساوي tuna."},
+{title:"السؤال 5: else الخارجية",code:'let sandwichType = "sweet";\\nlet savory = "tuna";\\nif (sandwichType == "savory") {\\n if (savory == "tuna") console.log("Exchange");\\n else console.log("Ham");\\n} else console.log("Jam");',opts:["Exchange","Ham","Jam","لا شيء"],a:2,why:"الشرط الخارجي غير صحيح، لذلك ينفذ else الخارجية دون الدخول إلى الشرط الداخلي."}
+];
+const reverseQs=[
+{target:"عدد مرات ظهور No في القائمة هو 2",prompt:"اختر الكود الذي يحسب عدد عناصر No في هذه المصفوفة.",opts:[{t:'if (item == "Yes") { count++; }',ok:false,why:"هذا الشرط يحصي Yes وليس No."},{t:'if (item == "No") { count++; }',ok:true,why:"صحيح؛ تتم زيادة العداد عندما تكون قيمة العنصر No."},{t:'if (item != "No") { count++; }',ok:false,why:"هذا الشرط يحصي العناصر التي لا تساوي No."}]},
+{target:"play basketball",prompt:"مع weather = sunny و friends = 7، اختر الشرط الذي يقود إلى هذا الخرج.",opts:[{t:'if (weather == "sunny" && friends >= 10)',ok:false,why:"الشرطان لا يتحققان معًا لأن friends تساوي 7."},{t:'if (weather == "sunny") { if (friends >= 10) ... else console.log("play basketball"); }',ok:true,why:"صحيح؛ الشرط الخارجي يتحقق والشرط الداخلي لا يتحقق."},{t:'else { console.log("play basketball"); }',ok:false,why:"else الخارجية لا تعمل عندما يكون الطقس sunny."}]},
+{target:"Exchange with Cody",prompt:"أي شرط داخلي ينتج هذا الخرج عندما sandwichType تساوي savory؟",opts:[{t:'if (savory == "tuna") console.log("Exchange with Cody");',ok:true,why:"صحيح؛ عندما تكون قيمة savory هي tuna يتم طباعة النص المطلوب."},{t:'if (savory == "ham") console.log("Exchange with Cody");',ok:false,why:"هذا الشرط يختبر ham وليس tuna."},{t:'else console.log("Exchange with Cody");',ok:false,why:"else تعمل عندما لا يتحقق الشرط السابق."}]}
+];
+const conceptQs=[
+{q:"ما الغرض الأساسي من المصفوفة Array؟",opts:["تخزين مجموعة من القيم","مقارنة قيمتين فقط","طباعة النصوص","إنهاء الحلقة"],a:0,why:"المصفوفة تخزن عدة عناصر داخل متغير واحد."},
+{q:"ما وظيفة for...of مع المصفوفة؟",opts:["تكرار المرور على عناصرها","حذف عناصرها","ترتيب عناصرها تلقائيًا","إيقاف البرنامج"],a:0,why:"تأخذ الحلقة كل عنصر بالتتابع وتنفذ الأوامر."},
+{q:"ماذا تعني count++؟",opts:["زيادة count بمقدار 1","تقليل count بمقدار 1","جعل count يساوي 0","مضاعفة count"],a:0,why:"عامل الزيادة ++ يضيف واحدًا إلى قيمة المتغير."},
+{q:"متى تنفذ أوامر if؟",opts:["عندما يكون الشرط صحيحًا","عندما يكون الشرط خطأ","دائمًا","مرة واحدة بعد انتهاء البرنامج"],a:0,why:"تنفذ if الأوامر الموجودة بداخلها عندما تكون نتيجة الشرط true."},
+{q:"ماذا يعني العامل &&؟",opts:["OR","AND","NOT","يساوي"],a:1,why:"AND يتطلب تحقق الشرطين معًا."},
+{q:"في الشروط المتداخلة، متى يصل البرنامج إلى if الداخلية؟",opts:["بعد تحقق الشرط الخارجي","قبل فحص الشرط الخارجي","في كل الحالات","بعد انتهاء البرنامج"],a:0,why:"الشرط الداخلي موجود داخل كتلة الشرط الخارجي، فلا يتم الوصول إليه إلا إذا دخل البرنامج تلك الكتلة."}
+];
+const answers={};
+function renderQuestionGroups(){
+ const groups=[['traceContainer',traceQs,'tr'],['reverseContainer',reverseQs,'rv'],['conceptContainer',conceptQs,'cn']];
+ groups.forEach(([id,arr,prefix])=>{const el=document.getElementById(id);el.innerHTML='';arr.forEach((q,i)=>{const key=prefix+i;const card=document.createElement('article');card.className='bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-4';let prompt=q.title||q.prompt||q.q;let code=q.code?`<pre class="bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-cyan-200">${q.code}</pre>`:'';let target=q.target?`<div class="bg-slate-950 border border-cyan-900 rounded-xl p-3 text-sm text-cyan-300">الخرج المطلوب: <b>${q.target}</b></div>`:'';let options=q.opts.map((o,j)=>{let label=typeof o==='string'?o:o.t;return `<label class="option-label"><input type="radio" name="${key}" value="${j}" onchange="answers['${key}']=${j}"><span class="text-sm text-slate-300 ${prefix==='rv'?'code-font':''}">${label}</span></label>`}).join('');card.innerHTML=`<div><span class="text-xs font-bold ${prefix==='tr'?'text-indigo-300':prefix==='rv'?'text-cyan-300':'text-purple-300'}">${prefix==='tr'?'تتبع الخرج':prefix==='rv'?'التحدي العكسي':'سؤال مفاهيم'} ${i+1}</span><h4 class="font-bold mt-2 leading-7">${prompt}</h4></div>${code}${target}<div class="space-y-2">${options}</div><div id="fb-${key}" class="hidden"></div>`;el.appendChild(card);});});
+}
+function calculateReport(){
+ let score=0,total=traceQs.length+reverseQs.length+conceptQs.length,details=[];
+ const groups=[['tr',traceQs],['rv',reverseQs],['cn',conceptQs]];
+ groups.forEach(([prefix,arr])=>arr.forEach((q,i)=>{const key=prefix+i,selected=answers[key],correct=q.a!==undefined?q.a:q.opts.findIndex(o=>o.ok),isCorrect=selected===correct;if(isCorrect)score++;const explanation=q.why||q.opts[correct].why;const fb=document.getElementById('fb-'+key);fb.className='feedback '+(isCorrect?'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30':'bg-red-500/10 text-red-300 border border-red-500/30');fb.textContent=(isCorrect?'إجابة صحيحة! ':'إجابة غير صحيحة. ')+(explanation||'راجع شرح الدرس.');details.push(`${prefix==='tr'?'تتبع الخرج':prefix==='rv'?'التحدي العكسي':'المفاهيم'} ${i+1}: ${isCorrect?'صحيح':'خطأ أو لم تتم الإجابة'}`);}));
+ const pct=Math.round(score/total*100),name=document.getElementById('studentName').value.trim()||'طالب غير مسجل';
+ document.getElementById('finalScore').textContent=`${score} / ${total}`;document.getElementById('finalPercentage').textContent=pct+'%';
+ const report=`منصة كودجي التعليمية - CodeGy\\nإشراف: المهندس أندرو مجدي\\nتقرير اختبار المصفوفات والتكرار والشروط المتداخلة\\nاسم الطالب: ${name}\\nالنتيجة: ${score} من ${total} (${pct}%)\\n\\nتفاصيل الأداء:\\n${details.map(x=>'• '+x).join('\\n')}\\n\\nتم استخراج التقرير آليًا عبر منصة كودجي.`;
+ document.getElementById('reportBox').value=report;return report;
+}
+function sendWhatsApp(){const report=calculateReport();const box=document.getElementById('reportBox');box.focus();box.select();try{document.execCommand('copy')}catch(e){}document.getElementById('copyAlert').classList.remove('hidden');window.open('https://wa.me/201285529570?text='+encodeURIComponent(report),'_blank');}
+renderStep();renderQuestionGroups();runAll();
+</script>
+</body></html>
